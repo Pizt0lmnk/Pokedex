@@ -17,20 +17,22 @@
  
 </head>
 <body onload="loadPokemon()"> 
-    <div id="pokedex" class="card" style="width: 18rem;">
+    <div id="pokedex" class="m-3 card bg-stone" style="width: 18rem;">
         <img id="pokemonImage" src='' class="card-img-top" alt="...">
         <div class="card-body">
           <h5 id="pokemonName" class="card-title">Pokémon Name</h5>
-          <p class="card-text">Skills</p>
+          <p class="card-text">Base-Stats</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Hitpoints</li>
-          <li class="list-group-item">Abilety</li>
-          <li class="list-group-item">Aggilety</li>
+          <li id="skill-hp" class="list-group-item">hp</li>
+          <li id="skill-attack" class="list-group-item">attack</li>
+          <li id="skill-defence" class="list-group-item">defence</li>
+          <li id="skill-speed" class="list-group-item">speed</li>
+
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <p id="type-1" >Type 1</p>
+          <p id="type-2" >Type 2</p>
         </div>
       </div>
 </body>
