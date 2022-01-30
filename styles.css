@@ -1,6 +1,6 @@
 #pokedex {
     color: white;
-    background-color: rgb(176, 115, 109);
+    background-color: rgb(179, 172, 138);
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkBbsuOzDgIDNrUZOTEaFN0D7dnQj1F_46-w&usqp=CAU");
     background-repeat: no-repeat;
     
@@ -12,22 +12,26 @@ bg-fire {
 }
 
 bg-nature {
-    background-color: rgb(72, 208, 176)
+    background-color: rgb(72, 208, 176);
 }
 
 bg-water {
-    background-color: rgb(134, 202, 254)
+    background-color: rgb(134, 202, 254);
 }
 
 bg-lightning {
-    background-color: rgb(255, 216, 111)
+    background-color: rgb(255, 216, 111);
 }
 
 bg-stone {
 
-    background-color: rgb(176, 115, 109)
+    background-color: rgb(179, 172, 138);
 }
 
 bg-psyco {
-    background-color: rgb(124, 82, 140)
+    background-color: rgb(124, 82, 140);
+}
+
+d-none {
+    display: none;
 }
