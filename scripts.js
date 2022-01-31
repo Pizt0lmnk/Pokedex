@@ -6,74 +6,51 @@ let allPokemon = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon"
 let currentPokemon;             // globaly declader to be used later in all functions when filled
 
 
-async function loadPokemon(){
+async function loadPokemon() {
 
-let url = 'https://pokeapi.co/api/v2/pokemon/'+ allPokemon[2].toLowerCase();        // to lowercase to make all characters small
-let response = await fetch(url);                                                    // wait for the fetch
-currentPokemon = await response.json();                                             //declare api/json to be used later
-
-console.log('Pokemon loaded:', currentPokemon);
-renderPokemonInfo();                                                                // dieplay single pokemoncard
-}
-
-async function displayOverview(){
-for (let i = 0; i < allPokemon.length; i++) {
-    const thisPokemon = allPokemon[i];
-    let url = 'https://pokeapi.co/api/v2/pokemon/'+ thisPokemon.toLowerCase();
-  
+    let url = 'https://pokeapi.co/api/v2/pokemon/' + allPokemon[2].toLowerCase();        // to lowercase to make all characters small
     let response = await fetch(url);                                                    // wait for the fetch
-    testWord = await response.json();
+    currentPokemon = await response.json();                                             //declare api/json to be used later
 
-    console.log(testWord['name']);
-    
-}
+    console.log('Pokemon loaded:', currentPokemon);
+    renderPokemonInfo();                                                                // dieplay single pokemoncard
 }
 
-function renderPokemonInfo(){                                                       // shows a variaty of info on selected pokemnon 
-    
+async function displayOverview() {
+    for (let i = 0; i < allPokemon.length; i++) {
+        const thisPokemon = allPokemon[i];
+        let url = 'https://pokeapi.co/api/v2/pokemon/' + thisPokemon.toLowerCase();
+
+        let response = await fetch(url);
+        testWord = await response.json();
+
+        document.getElementById('overview').innerHTML += `
+        <div style="height:250px; width:250px; position:relative;" class=" ">
+        <img style="height:100px;" src="${testWord["sprites"]["other"]["dream_world"]["front_default"]}" class="mt-2 card-img" alt="...">
+        <div class="bg-stone card-img-overlay">
+          <h5 class="card-title">${testWord['name']}</h5>
+          <p class="card-text"> ${testWord["types"]["0"]["type"]["name"]}</p>
+          <p class="card-text">${testWord["types"]["0"]["type"]["name"]}</p>
+        </div>
+        </div>
+    `;
+    }
+}
+
+
+function renderPokemonInfo() {                                                       // shows a variaty of info on selected pokemnon 
+
     document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
     document.getElementById('pokemonImage').src = currentPokemon["sprites"]["other"]["dream_world"]["front_default"];   //its the .img so src =
-    document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"]+` hp`;
-    document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"]+` attack`;
-    document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"]+` defence`;
-    document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"]+` speed`;
-    document.getElementById('type-1').innerHTML =currentPokemon["types"]["0"]["type"]["name"];
-    document.getElementById('type-2').innerHTML =currentPokemon["types"]["1"]["type"]["name"];
+    document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"] + ` hp`;
+    document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"] + ` attack`;
+    document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"] + ` defence`;
+    document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"] + ` speed`;
+    document.getElementById('type-1').innerHTML = currentPokemon["types"]["0"]["type"]["name"];
+    document.getElementById('type-2').innerHTML = currentPokemon["types"]["1"]["type"]["name"];
 }
 
 
 
-async function loadPokemon(){
 
-let url = 'https://pokeapi.co/api/v2/pokemon/'+ allPokemon[19].toLowerCase();        // to lowercase to make all characters small
-let response = await fetch(url);                                                    // wait for the fetch
-currentPokemon = await response.json();                                             //declare api/json to be used later
 
-console.log('Pokemon loaded:', currentPokemon);
-renderPokemonInfo();                                                                // dieplay single pokemoncard
-}
-
-async function displayOverview(){
-for (let i = 0; i < allPokemon.length; i++) {
-    const thisPokemon = allPokemon[i];
-    let url = 'https://pokeapi.co/api/v2/pokemon/'+ thisPokemon.toLowerCase();
-  
-    let response = await fetch(url);                                                    // wait for the fetch
-    currentPokemon = await response.json();
-
-    console.log(currentPokemon['name']);
-    
-}
-}
-
-function renderPokemonInfo(){                                                       // shows a variaty of info on selected pokemnon 
-    
-    document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
-    document.getElementById('pokemonImage').src = currentPokemon["sprites"]["other"]["dream_world"]["front_default"];   //its the .img so src =
-    document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"]+` hp`;
-    document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"]+` attack`;
-    document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"]+` defence`;
-    document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"]+` speed`;
-    document.getElementById('type-1').innerHTML =currentPokemon["types"]["0"]["type"]["name"];
-    document.getElementById('type-2').innerHTML =currentPokemon["types"]["1"]["type"]["name"];
-}

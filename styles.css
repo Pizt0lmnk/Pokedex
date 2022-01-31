@@ -58,3 +58,37 @@ d-none {
     justify-content: left;
 
 }
+
+.overview-div {}
+
+.overview {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.overview image {
+    width: 100px;
+    z-index: 2;
+}
+
+.container-overview {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 150px;
+}
+
+.card-img-overlay {
+    background: linear-gradient(294deg, #8c8c9c, transparent);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    border-radius: calc(0.25rem - 1px);
+    margin: 2px;
+}
