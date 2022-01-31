@@ -6,35 +6,31 @@ let allPokemon = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon"
 let currentPokemon;             // globaly declader to be used later in all functions when filled
 
 
-async function loadPokemon() {
-
-    let url = 'https://pokeapi.co/api/v2/pokemon/' + allPokemon[2].toLowerCase();        // to lowercase to make all characters small
-    let response = await fetch(url);                                                    // wait for the fetch
-    currentPokemon = await response.json();                                             //declare api/json to be used later
-
-    console.log('Pokemon loaded:', currentPokemon);
-    renderPokemonInfo();                                                                // dieplay single pokemoncard
-}
-
 async function displayOverview() {
-    for (let i = 0; i < allPokemon.length; i++) {
+    for (let i = 0; i < allPokemon.length; i++) {                       // load all pokemon from array
         const thisPokemon = allPokemon[i];
         let url = 'https://pokeapi.co/api/v2/pokemon/' + thisPokemon.toLowerCase();
 
         let response = await fetch(url);
-        testWord = await response.json();
+        currentPokemon = await response.json();
 
         document.getElementById('overview').innerHTML += `
-        <div style="height:250px; width:250px; position:relative;" class=" ">
-        <img style="height:100px;" src="${testWord["sprites"]["other"]["dream_world"]["front_default"]}" class="mt-2 card-img" alt="...">
+        <div onclick="loadPokemon(${currentPokemon['name']})" style="height:250px; width:250px; position:relative;" class=" ">
+        <img style="height:100px;" src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="mt-3 card-img" alt="...">
         <div class="bg-stone card-img-overlay">
-          <h5 class="card-title">${testWord['name']}</h5>
-          <p class="card-text"> ${testWord["types"]["0"]["type"]["name"]}</p>
-          <p class="card-text">${testWord["types"]["0"]["type"]["name"]}</p>
+          <h5 class="card-title">${currentPokemon['name']}</h5>
+          <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>
+          <p class="card-text">${currentPokemon["types"]["0"]["type"]["name"]}</p>
         </div>
         </div>
     `;
     }
+}
+
+function showCard(){
+    document.getElementById('pokedex').classList.remove('d-none');
+    document.getElementById('overview').classList.add('d-none');
+    
 }
 
 
@@ -52,5 +48,15 @@ function renderPokemonInfo() {                                                  
 
 
 
+async function loadPokemon(name) {
+    console.log('The picked Pokemon is', name);
+    debugger;
+    let url = 'https://pokeapi.co/api/v2/pokemon/' + name;        // to lowercase to make all characters small
+    let response = await fetch(url);                                                    // wait for the fetch
+    currentPokemon = await response.json();                                             //declare api/json to be used later
+
+    showCard();
+    renderPokemonInfo();                                                         // display single pokemoncard
+}
 
 

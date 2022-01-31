@@ -59,7 +59,6 @@ d-none {
 
 }
 
-.overview-div {}
 
 .overview {
     display: flex;
@@ -78,7 +77,7 @@ d-none {
     justify-content: center;
     width: 100%;
     flex-wrap: wrap;
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 .card-img-overlay {
@@ -89,6 +88,9 @@ d-none {
     bottom: 0;
     left: 0;
     padding: 1rem;
-    border-radius: calc(0.25rem - 1px);
+    border-radius: calc(1.25rem - 1px);
     margin: 2px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
 }

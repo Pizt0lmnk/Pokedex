@@ -16,7 +16,7 @@
 
  
 </head>
-<body onload="loadPokemon()"> 
+<body onload="displayOverview()"> 
   <nav  class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a id="nav-container" class="navbar-brand" href="#">
@@ -30,7 +30,7 @@
 <div id="overview" class="container-overview"></div>
 
 
-    <div id="pokedex" class="m-3 card bg-stone" style="width: 18rem;">
+    <div id="pokedex" class="d-none m-3 card bg-stone" style="width: 18rem;">
         <img id="pokemonImage" src='' class="card-img-top" alt="...">
         <div class="card-body">
           <h5 id="pokemonName" class="card-title">Pokémon Name</h5>
