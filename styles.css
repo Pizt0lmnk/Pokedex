@@ -1,9 +1,8 @@
 #pokedex {
     color: white;
     background-color: rgb(179, 172, 138);
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkBbsuOzDgIDNrUZOTEaFN0D7dnQj1F_46-w&usqp=CAU");
-    background-repeat: no-repeat;
-
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkBbsuOzDgIDNrUZOTEaFN0D7dnQj1F_46-w&usqp=CAU");
+    background-repeat: no-repeat; */
 }
 
 bg-fire {
@@ -34,6 +33,11 @@ bg-psyco {
 
 d-none {
     display: none;
+}
+
+#pokedex image {
+    width: 200px;
+    padding: 8px;
 }
 
 #nav-img {
