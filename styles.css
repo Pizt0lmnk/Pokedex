@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
 #pokedex {
     color: white;
     background-color: rgb(179, 172, 138);
@@ -6,28 +13,61 @@
 }
 
 .bg-fire {
-    background-color: rgb(251, 108, 108);
+    background-color: rgb(255 0 0 / 81%);   
 }
 
 .bg-grass {
-    background-color: rgb(72, 208, 176);
+    background-color: rgb(72, 208, 124);
 }
 
 .bg-water {
     background-color: rgb(134, 202, 254);
 }
 
-.bg-lightning {
-    background-color: rgb(255, 216, 111);
+.bg-electric {
+    background-color: rgb(255, 245, 111);
 }
 
-.bg-stone {
+.bg-rock {
     background-color: rgb(179, 172, 138);
 }
 
-.bg-psyco {
-    background-color: rgb(124, 82, 140);
+.bg-psychic {
+    background-color: rgba(124, 82, 140, 0.808);
 }
+.bg-poison {
+    background-color: rgb(8 39 7 / 63%);
+}
+
+.bg-normal {
+    background-color: rgba(248, 81, 20, 0.76);
+}
+
+.bg-ghost {
+    background-color: lightgray;
+}
+
+.bg-ground {
+    background-color: rgba(83, 46, 16, 0.692);
+}
+
+.bg-fighting {
+    background-color:rgba(182, 124, 0, 0.65);
+}
+
+.bg-bug {
+    background-color:rgba(172, 255, 47, 0.74);
+}
+.bg-fairy {
+    background-color:rgb(236, 213, 229);
+}
+.bg-ice {
+    background-color:rgb(231, 231, 218);
+}
+.bg-dragon {
+    background-color:rgba(4, 0, 255, 0.5);
+}
+
 
 .d-none {
     display: none;
@@ -48,6 +88,7 @@
     width: 130px;
     height: 54px;
     margin-left: 36px;
+    mix-blend-mode: multiply;
 }
 
 #nav-text {
@@ -57,7 +98,9 @@
 
 #nav-container {
     display: flex;
-    justify-content: left;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(201, 216, 236);
 
 }
 
@@ -83,7 +126,7 @@
 }
 
 .card-img-overlay {
-   /* background: linear-gradient(294deg, #8c8c9c, transparent);*/
+    /* background: linear-gradient(294deg, #8c8c9c, transparent);*/
     position: absolute;
     top: 0;
     right: 0;
@@ -105,9 +148,9 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
-    grid-template-areas: 
-    "image"
-    "text";
+    grid-template-areas:
+        "image"
+        "text";
 }
 
 .card-image {

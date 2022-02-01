@@ -12,14 +12,14 @@ async function displayOverview() {
         let response = await fetch(url);                    //waiting so the function doesnt continue without this input
         currentPokemon = await response.json();             // to json so we have a file type we can work with
 
-        let pokemonEntry = '';                              // predefined so it can be filled later
+        let pokemonEntry = '';                              // predefined and empty so it can be filled later (3 parts)
 
         let Types = currentPokemon["types"].length;         // checking if one or two types are defined
         pokemonEntry += `
             <div onclick="loadPokemon('${currentPokemon['name']}')" class="card-wrapper bg-${currentPokemon["types"]["0"]["type"]["name"]}">
                 <img src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${currentPokemon['name']}">
                 <div class="card-description">
-                    <h5 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)}</h5>
+                    <h2 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)}</h2>
                     <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>`
                     if (Types > 1) {                                    // to display only if both types are set
                         pokemonEntry += `<p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>`
