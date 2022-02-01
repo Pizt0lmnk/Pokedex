@@ -5,33 +5,31 @@
     background-repeat: no-repeat; */
 }
 
-bg-fire {
+.bg-fire {
     background-color: rgb(251, 108, 108);
-
 }
 
-bg-nature {
+.bg-grass {
     background-color: rgb(72, 208, 176);
 }
 
-bg-water {
+.bg-water {
     background-color: rgb(134, 202, 254);
 }
 
-bg-lightning {
+.bg-lightning {
     background-color: rgb(255, 216, 111);
 }
 
-bg-stone {
-
+.bg-stone {
     background-color: rgb(179, 172, 138);
 }
 
-bg-psyco {
+.bg-psyco {
     background-color: rgb(124, 82, 140);
 }
 
-d-none {
+.d-none {
     display: none;
 }
 
@@ -85,7 +83,7 @@ d-none {
 }
 
 .card-img-overlay {
-    background: linear-gradient(294deg, #8c8c9c, transparent);
+   /* background: linear-gradient(294deg, #8c8c9c, transparent);*/
     position: absolute;
     top: 0;
     right: 0;
@@ -97,4 +95,39 @@ d-none {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
+}
+
+.card-wrapper {
+    border-radius: calc(8px);
+    margin: 2px;
+    height: 400px;
+    width: 250px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "image"
+    "text";
+}
+
+.card-image {
+    border-radius: calc(8px);
+    margin-top: 20px;
+    height: 100%;
+    width: calc(100% - 40px);
+    grid-area: image;
+    overflow: hidden;
+    justify-self: center;
+    background-color: white;
+}
+
+.card-image {
+    border-radius: calc(8px);
+    margin-top: 20px;
+    height: 100%;
+    width: calc(100% - 40px);
+    grid-area: image;
+    overflow: hidden;
+    justify-self: center;
+    background-color: white;
 }
