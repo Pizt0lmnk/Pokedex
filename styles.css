@@ -192,5 +192,16 @@ h2 {
     overflow: hidden;
     justify-self: center;
     padding-left: 20px;
+}
 
+.main-overlay{
+   
+    backdrop-filter: blur(19px);
+    z-index: 10;
+    position: absolute;
+    top: 62px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: zoom 1000ms ease-in-out;
 }
