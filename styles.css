@@ -1,8 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Fira Sans Condensed', sans-serif;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    padding: 20px;
 }
 
 #pokedex {
@@ -13,7 +16,7 @@ body {
 }
 
 .bg-fire {
-    background-color: rgb(255 0 0 / 81%);   
+    background-color: rgb(255 0 0 / 81%);
 }
 
 .bg-grass {
@@ -35,6 +38,7 @@ body {
 .bg-psychic {
     background-color: rgba(124, 82, 140, 0.808);
 }
+
 .bg-poison {
     background-color: rgb(8 39 7 / 63%);
 }
@@ -52,20 +56,23 @@ body {
 }
 
 .bg-fighting {
-    background-color:rgba(182, 124, 0, 0.65);
+    background-color: rgba(182, 124, 0, 0.65);
 }
 
 .bg-bug {
-    background-color:rgba(172, 255, 47, 0.74);
+    background-color: rgba(172, 255, 47, 0.74);
 }
+
 .bg-fairy {
-    background-color:rgb(236, 213, 229);
+    background-color: git rgb(236, 213, 229);
 }
+
 .bg-ice {
-    background-color:rgb(231, 231, 218);
+    background-color: rgb(231, 231, 218);
 }
+
 .bg-dragon {
-    background-color:rgba(4, 0, 255, 0.5);
+    background-color: rgba(4, 0, 255, 0.5);
 }
 
 
@@ -87,23 +94,34 @@ body {
 #nav-img-header {
     width: 130px;
     height: 54px;
-    margin-left: 36px;
+    margin-right: 25px;
     mix-blend-mode: multiply;
 }
 
 #nav-text {
+    margin: 0;
     margin-left: 1em;
-    font-size: 1.6em;
+    font-size: 2.5em;
+    text-decoration-color: rgba(255, 255, 255, 0);
+    color: white;
+    font-weight: 900;
+
 }
 
 #nav-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(201, 216, 236);
-
+    text-decoration: none;
+    padding: 4px;
 }
 
+.div-left-nav {
+    align-items: center;
+    display: flex;
+    margin-left: 25px;
+}
 
 .overview {
     display: flex;
@@ -164,13 +182,15 @@ body {
     background-color: white;
 }
 
-.card-image {
-    border-radius: calc(8px);
-    margin-top: 20px;
-    height: 100%;
+h2 {
+    padding: 20px;
+}
+
+.card-text {
     width: calc(100% - 40px);
-    grid-area: image;
+    grid-area: text;
     overflow: hidden;
     justify-self: center;
-    background-color: white;
+    padding-left: 20px;
+
 }
