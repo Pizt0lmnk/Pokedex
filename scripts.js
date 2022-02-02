@@ -1,80 +1,49 @@
-let allPokemon = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "nidoran-f", "Nidorina", "Nidoqueen", "nidoran-m", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetchd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "mr-mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo"];
+let allPokemon = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "nidoran-f", "Nidorina", "Nidoqueen", "nidoran-m", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetchd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "mr-mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"];
 
+document.addEventListener('alpine:init', () => {
+    Alpine.store('cards', {
+        centered: false, centeredPokemon: '',
+    })
 
-let currentPokemon;             // globaly declader to be used later in all functions when filled
+    fetchPokemon().then(() => console.log('Pokemon loaded.'));
+})
 
-
-async function displayOverview() {
+async function fetchPokemon() {
+    const urls = [];
     for (let i = 0; i < allPokemon.length; i++) {                       // load all pokemon from array
-        const thisPokemon = allPokemon[i];
-        let url = 'https://pokeapi.co/api/v2/pokemon/' + thisPokemon.toLowerCase(); //lowercase so it fits the URL
-
-        let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-        currentPokemon = await response.json();             // to json so we have a file type we can work with
-
+        urls.push('https://pokeapi.co/api/v2/pokemon/' + allPokemon[i].toLowerCase()); //lowercase so it fits the URL
+    }
+    const requests = urls.map((url) => fetch(url));
+    const responses = await Promise.all(requests);
+    const json = responses.map((response) => response.json());
+    const data = await Promise.all(json);
+    data.forEach((pokemon, index) => {
         let pokemonEntry = '';                              // predefined and empty so it can be filled later (3 parts)
 
-        let Types = currentPokemon["types"].length;         // checking if one or two types are defined
+        let Types = pokemon["types"].length;         // checking if one or two types are defined
         pokemonEntry += `
-            <div onclick="loadPokemon('${currentPokemon['name']}')" class="card-wrapper bg-${currentPokemon["types"]["0"]["type"]["name"]}">
-                <img src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${currentPokemon['name']}">
+            <div :id="$id('pokemon')" x-bind:class="$store.cards.centered && $store.cards.centeredPokemon === $el.id ? 'card-centered' : ''" x-on:click="setPokemon($el)" class="card-wrapper bg-${pokemon["types"]["0"]["type"]["name"]}">
+                <img src="${pokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${pokemon['name']}">
                 <div class="card-description">
-                    <h2 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)}</h2>
-                    <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>`
-                    if (Types > 1) {                                    // to display only if both types are set
-                        pokemonEntry += `<p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>`
-                    }
-                    pokemonEntry += `
+                    <h2 class="card-title">${pokemon['name'].substring(0, 1).toUpperCase() + pokemon['name'].substring(1)}<small class="card-number">#${index + 1}</small></h2>
+                    
+                    <p class="card-text"> ${pokemon["types"]["0"]["type"]["name"]}</p>`
+        if (Types > 1) {                                    // to display only if both types are set
+            pokemonEntry += `<p class="card-text">${pokemon["types"]["1"]["type"]["name"]}</p>`
+        }
+        pokemonEntry += `
                 </div>
             </div>`
-            document.getElementById('overview').innerHTML += pokemonEntry; // let the different elements be in place befor you display it
-        }
+        document.getElementById('pokemon-list').innerHTML += pokemonEntry; // let the different elements be in place befor you display it
+    });
+}
+
+async function setPokemon(element) {
+    if (Alpine.store('cards').centered === false) {
+        Alpine.store('cards').centered = true;
+        Alpine.store('cards').centeredPokemon = element.id;
+    } else {
+        Alpine.store('cards').centered = false;
+        Alpine.store('cards').centeredPokemon = '';
     }
-
-/*
-    function SeconType() {
-        let Types = currentPokemon["types"].length;
-        if (Types > 1) {
-            document.getElementById('quick-fix').innerHTML += `  <p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>`;
-
-        }
-    }
-*/
-
-
-function renderPokemonInfo() {                                                       // shows a variaty of info on selected pokemnon 
-
-    document.getElementById('pokemonName').innerHTML = currentPokemon['name'].toUpperCase();
-    document.getElementById('pokemonImage').src = currentPokemon["sprites"]["other"]["dream_world"]["front_default"];   //its the .img so src =
-    document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"] + ` hp`;
-    document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"] + ` attack`;
-    document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"] + ` defence`;
-    document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"] + ` speed`;
-    document.getElementById('type-1').innerHTML = currentPokemon["types"]["0"]["type"]["name"];
-    document.getElementById('type-2').innerHTML = currentPokemon["types"]["1"]["type"]["name"];
 }
-
-
-
-async function loadPokemon(name) {
-    showCard();
-    console.log('The picked Pokemon is', name);
-    let url = 'https://pokeapi.co/api/v2/pokemon/' + name;        // to lowercase to make all characters small
-    let response = await fetch(url);                                                    // wait for the fetch
-    currentPokemon = await response.json();                                             //declare api/json to be used later
-
-    renderPokemonInfo();                                                         // display single pokemoncard
-}
-
-
-function showCard() {
-    document.getElementById('pokedex').classList.remove('d-none');
-    document.getElementById('overview').classList.add('d-none');
-}
-
-
-function hideCard() {
-    document.getElementById('pokedex').classList.add('d-none');
-    document.getElementById('overview').classList.remove('d-none');
-}
-
